@@ -44,25 +44,36 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
+            'loginAction' => [
+                'controller' => 'Login',
+                'action' => 'Login'
+            ],
             'loginRedirect' => [
-                'controller' => 'List',
-                'action' => 'index'
+                'controller' => 'Login',
+                'action' => 'Login'
             ],
             'logoutRedirect' => [
-                'controller' => 'List',
-                'action' => 'index'
+                'controller' => 'Login',
+                'action' => 'Login'
             ],
             'authenticate' => [
                 'Form' => [
-                    'fields' => ['username' => 'username']
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password'
+                    ]
                 ]
             ]
         ]);
     }
 
-    public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['index','view']);
-        $this->set('loggedIn', $this->Auth->user());
+    public function beforeFilter(Event $event) {
+        $this->Auth->authorize = 'Controller';
+    }
+
+    public function isAuthorized($user) {
+        // Here is where we should verify the role and give access based on role
+
+        return true;
     }
 }

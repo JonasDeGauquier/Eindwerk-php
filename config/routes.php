@@ -49,7 +49,14 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'List', 'action' => 'index']);
+ //   $routes->connect('/', ['controller' => 'List', 'action' => 'index']);
+
+    $routes->connect('/', array('controller' => 'Login', 'action' => 'Login'));
+
+    $routes->connect('/login', array('controller' => 'Login', 'action' => 'Login'));
+
+    $routes->connect('/logout', array('controller' => 'Login', 'action' => 'logout'));
+
 
     /**
      * Connect catchall routes for all controllers.
@@ -70,8 +77,17 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
+
+
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.
  */
 Plugin::routes();
+
+Router::scope('/full-calendar', function ($routes) {
+    // Connect other routes.
+    $routes->scope('/full-calendar', function ($routes) {
+        $routes->loadPlugin('FullCalendar');
+    });
+});

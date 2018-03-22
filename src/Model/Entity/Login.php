@@ -2,15 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: jonasdegauquier
- * Date: 13/03/18
- * Time: 19:46
+ * Date: 15/03/18
+ * Time: 22:35
  */
 
-namespace App\Model;
+namespace App\Model\Entity;
 
-use Cake\Core\App;
 
-class User
+class Login
 {
     public $validate = array(
         'username' => array(

@@ -6,6 +6,6 @@
         <?= $this->Form->control('username') ?>
         <?= $this->Form->control('password') ?>
     </fieldset>
-    <?= $this->Form->button(__('Login'), ['class' => 'btn btn-info']); ?>
+    <?= $this->Form->button(__('Login'), ['class' => 'btn btn-primary']); ?>
     <?= $this->Form->end() ?>
 </div>

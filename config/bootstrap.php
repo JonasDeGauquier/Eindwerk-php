@@ -214,3 +214,4 @@ Type::build('timestamp')
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+Plugin::load('FullCalendar', ['autoload' => true, 'bootstrap' => false, 'routes' => true]);
