@@ -135,7 +135,8 @@ class EventsController extends FullCalendarAppController
         $this->viewBuilder()->layout('ajax');
         $vars = $this->request->query([]);
         $conditions = ['UNIX_TIMESTAMP(start) >=' => $vars['start'], 'UNIX_TIMESTAMP(start) <=' => $vars['end']];
-        $events = $this->Events->find('all', $conditions)->contain(['EventTypes']);
+        $user = (new \Cake\Network\Session)->read('User');
+        $events = $this->Events->find('all', $conditions)->contain(['EventTypes'])->where(['personeel_id =' => $user]);
         foreach($events as $event) {
             $json[] = [
                     'id' => $event->id,

@@ -28,6 +28,7 @@
 		echo $this->Form->input('details');
         echo $this->Form->input('start', ['timeFormat' => 24]);
         echo $this->Form->input('end_date', ['timeFormat' => 24]);
+        echo  $this->Form->hidden( 'personeel_id', array( 'value' =>  (new \Cake\Network\Session)->read('User') ) );
 	?>
 	</fieldset>
 <?= $this->Form->button(__('Submit', true));?>

@@ -57,7 +57,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/logout', array('controller' => 'Login', 'action' => 'logout'));
 
-
+    $routes->connect('/personeel', array('controller' => 'Personeel', 'action' => 'index'));
     /**
      * Connect catchall routes for all controllers.
      *

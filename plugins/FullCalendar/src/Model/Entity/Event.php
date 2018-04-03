@@ -21,5 +21,6 @@ class Event extends Entity
         'start' => true,
         'end_date' => true,
         'active' => true,
+        'personeel_id' => true,
     ];
 }

@@ -89,6 +89,7 @@ class LoginController extends AppController
 
                 $session = $this->request->session();
                 (new \Cake\Network\Session)->write('Rol', $rolId);
+                (new \Cake\Network\Session)->write('User', $userId);
 
 
                 return $this->redirect($this->Auth->redirectUrl('/full-calendar'));
