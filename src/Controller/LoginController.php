@@ -49,6 +49,9 @@ class LoginController extends AppController
     public function login()
     {
         if($this->Auth->user()) {
+            if ((new \Cake\Network\Session)->check('personeel')) {
+                (new \Cake\Network\Session)->delete('personeel');
+            }
             return $this->redirect($this->Auth->redirectUrl('/full-calendar'));
         }
 
@@ -72,7 +75,7 @@ class LoginController extends AppController
             $databasePassword = $results['password'];
 
             if ($username == $databaseUsername && $hashed == $databasePassword){
-                $user = $username + $hashed;
+                $user = $username . ' ' . $hashed;
             } else{
                 $this->Flash->error(__('Invalid email or password, try again'));
                 return;

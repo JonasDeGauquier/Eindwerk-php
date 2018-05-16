@@ -37,6 +37,14 @@ legend {
     color:#15848F;
 }
 
+.navbar {
+    margin-bottom: 20px;
+}
+
+.scroll {
+    overflow: scroll;
+}
+
 .row {
     max-width: 80rem;
 }

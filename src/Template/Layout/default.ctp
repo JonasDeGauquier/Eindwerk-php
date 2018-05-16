@@ -42,11 +42,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Planning master</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/">Agenda <span class="sr-only">(current)</span></a>
             </li>
             <?php
@@ -60,6 +60,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <?php
             }
             ?>
+            <li class="nav-item">
+                <a class="nav-link" href="/calendar">Alle agenda's</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
             </li>

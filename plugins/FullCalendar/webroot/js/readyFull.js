@@ -12,6 +12,21 @@
 // JavaScript Document
 jQuery(document).ready(function ($) {
 
+    var test = $.cookie('test');
+
+    for(var i = 0; i < test.length; i++) {
+        if(i%2) {
+            console.log("loop", test[i]);
+
+        }
+        else {
+            $( "#"+ test[i]).prop('checked', true);
+        }
+    }
+
+
+
+
     // page is now ready, initialize the calendar...
     $('#calendar').fullCalendar({
         header: {
@@ -24,7 +39,7 @@ jQuery(document).ready(function ($) {
         scrollTime: "08:00:00",
         aspectRatio: 2,
         editable: false,
-        events: 'events/feed.json',
+        events: 'events/feedFull.json',
         eventRender: function (event, element) {
             element.qtip({
                 content: event.details,
@@ -104,4 +119,12 @@ jQuery(document).ready(function ($) {
             $.post(url, function (data){});
         }
     })
+});
+
+$( "input" ).on( "click", function() {
+    var checkedValues = $('input:checkbox:checked').map(function() {
+        return this.value;
+    }).get();
+    document.cookie = "test=" + checkedValues;
+    location.reload();
 });

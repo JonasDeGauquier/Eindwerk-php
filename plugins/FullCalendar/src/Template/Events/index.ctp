@@ -12,20 +12,18 @@
 ?>
 
 <div class="events small-12 medium-8 large-12 columns">
-	<h2 class="inline-block"><?= __('Events');?></h2>
+	<h2 class="inline-block"><?= __('Werkdagen');?></h2>
 	<ul class="no-bullet inline-list inline-block">
-		<li><?= $this->Html->link(__('Add an Event', true), ['action' => 'add']); ?></li>
-		<li><?= $this->Html->link(__('Manage Event Types', true), ['controller' => 'event_types', 'action' => 'index']); ?> </li>
-		<li><?= $this->Html->link(__('View Calendar', true), ['controller' => 'full_calendar']); ?></li>
+		<li><?= $this->Html->link(__('Voeg shift toe', true), ['action' => 'add']); ?></li>
+		<li><?= $this->Html->link(__('Beheer soorten shiften', true), ['controller' => 'event_types', 'action' => 'index']); ?> </li>
+		<li><?= $this->Html->link(__('Toon kalender', true), ['controller' => 'full_calendar']); ?></li>
 	</ul>
 	<table cellpadding="0" cellspacing="0" class="small-12 columns">
 		<tr>
-				<th><?= $this->Paginator->sort('event_type_id');?></th>
-				<th><?= $this->Paginator->sort('title');?></th>
-				<th><?= $this->Paginator->sort('status');?></th>
-				<th><?= $this->Paginator->sort('start');?></th>
-	            <th><?= $this->Paginator->sort('end_date');?></th>
-	            <th><?= $this->Paginator->sort('all_day');?></th>
+				<th><?= $this->Paginator->sort('event_type_id' , 'Shift');?></th>
+				<th><?= $this->Paginator->sort('details' , 'Details');?></th>
+				<th><?= $this->Paginator->sort('start' , 'Begin datum');?></th>
+	            <th><?= $this->Paginator->sort('end_date', 'Eind datum');?></th>
 				<th class="actions"></th>
 		</tr>
 		<?php
@@ -40,19 +38,12 @@
 				<td>
 					<?= $this->Html->link($event->event_type->name, ['controller' => 'event_types', 'action' => 'view', $event->event_type->id]); ?>
 				</td>
-				<td><?= $event->title ?></td>
-				<td><?= $event->status ?></td>
+                <td><?= $event->details ?></td>
 				<td><?= $event->start ?></td>
-		        <?php if($event->all_day == 0): ?>
-		   			<td><?= $event->end ?></td>
-		    	<?php else: ?>
-				<td>N/A</td>
-		        <?php endif; ?>
-		        <td><?php if($event->all_day == 1) { echo "Yes"; } else { echo "No"; } ?></td>
+                <td><?= $event->end_date ?></td>
 				<td class="actions">
-					<?= $this->Html->link(__('View', true), ['action' => 'view', $event->id]); ?>
-					<?= $this->Html->link(__('Edit', true), ['action' => 'edit', $event->id]); ?>
-					<?= $this->Form->postLink('Delete', ['action' => 'delete', $event->id], ['confirm' => 'Are you sure?']); ?>
+					<?= $this->Html->link(__('Aanpassen', true), ['action' => 'edit', $event->id]); ?>
+					<?= $this->Form->postLink('Verwijder', ['action' => 'delete', $event->id], ['confirm' => 'Bent u zeker']); ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>

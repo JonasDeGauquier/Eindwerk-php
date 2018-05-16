@@ -15,12 +15,16 @@
 namespace App\Controller;
 
 use Cake\Core\Configure;
+use Cake\Datasource\ConnectionManager;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use PDO;
 
 /**
  * Static content controller
+ *
+ * @property \App\Model\Table\PersoneelTable $Personeel
  *
  * This controller will render views from Template/Pages/
  *

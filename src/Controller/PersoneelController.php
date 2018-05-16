@@ -43,4 +43,25 @@ class PersoneelController extends AppController
 
         $this->set('personeel', $personeel);
     }
+
+    public function planning($id = null)
+    {
+        (new \Cake\Network\Session)->write('personeel', $id);
+        $this->redirect("/full-calendar");
+    }
+
+    /**
+     * @param null $id
+     */
+    public function allCalenders($id=null) {
+        /*$conn = ConnectionManager::get('default');
+        $stmt2 = $conn->execute("SELECT * FROM personeel WHERE actief = 'true'");
+        $queryResult = $stmt2 ->fetch(PDO::FETCH_ASSOC);
+        $this->set('personeel', $queryResult);*/
+
+        $personeel = $this->Personeel->find('all');
+
+        $this->set('personeel', $personeel);
+
+    }
 }

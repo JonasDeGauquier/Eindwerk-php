@@ -12,7 +12,9 @@
 
 namespace FullCalendar\Controller;
 
-use FullCalendar\Controller\FullCalendarAppController;
+use Cake\I18n\Time;
+use Cake\ORM\TableRegistry;
+use ChromePhp;
 use Cake\Routing\Router;
 
 /**
@@ -135,15 +137,84 @@ class EventsController extends FullCalendarAppController
         $this->viewBuilder()->layout('ajax');
         $vars = $this->request->query([]);
         $conditions = ['UNIX_TIMESTAMP(start) >=' => $vars['start'], 'UNIX_TIMESTAMP(start) <=' => $vars['end']];
-        $user = (new \Cake\Network\Session)->read('User');
+        if ($this->request->Session()->check('personeel') != true) {
+            $user = (new \Cake\Network\Session)->read('User');
+        }
+        else {
+            $user = (new \Cake\Network\Session)->read('personeel');
+        }
+
         $events = $this->Events->find('all', $conditions)->contain(['EventTypes'])->where(['personeel_id =' => $user]);
         foreach($events as $event) {
+            $eventsType = TableRegistry::get('EventTypes')->find('all')->where(['id =' => $event->event_type_id]);
+            $results = $eventsType->all()->first();
+
+            Time::setToStringFormat('YYYY-MM-dd HH:mm:ss');
+
+            $startDate = new Time($event->start);
+            $dateStart = strtotime($results->start);
+            $startDate->addHours(date('H', $dateStart));
+            $startDate->addMinutes(date('i', $dateStart));
+
+            $endDate = new Time($event->end_date);
+            $dateEnd = strtotime($results->end_date);
+            $endDate->addHours(date('H', $dateEnd));
+            $endDate->addMinutes(date('i', $dateEnd));
+
             $json[] = [
                     'id' => $event->id,
-                    'details' => $event->details,
-                    'start'=> $event->start,
-                    'end' => $event->end,
+                    'title' => $results->name,
+                    'details' => $event->details . ' ' . $results->start . ' '. $results->end_date,
+                    'start'=> $startDate,
+                    'end' => $endDate,
                     'url' => Router::url(['action' => 'view', $event->id]),
+
+            ];
+        }
+        $this->set(compact('json'));
+        $this->set('_serialize', 'json');
+    }
+
+    public function feedFull($id=null) {
+        $test = $_COOKIE['test'];
+
+        $test2 = explode(",", $test);
+        include 'ChromePhp.php';
+        ChromePhp::log($test2);
+
+        $this->viewBuilder()->layout('ajax');
+        $vars = $this->request->query([]);
+        $conditions = ['UNIX_TIMESTAMP(start) >=' => $vars['start'], 'UNIX_TIMESTAMP(start) <=' => $vars['end']];
+
+        $events = $this->Events->find("all" , array(
+            'conditions' => array('personeel_id IN' => $test2)
+        ));
+        foreach($events as $event) {
+            $eventsType = TableRegistry::get('EventTypes')->find('all')->where(['id =' => $event->event_type_id]);
+            $results = $eventsType->all()->first();
+
+            $personeel = TableRegistry::get('personeel')->find('all')->where(['id =' => $event->personeel_id]);
+            $personeelResults = $personeel->all()->first();
+
+            Time::setToStringFormat('YYYY-MM-dd HH:mm:ss');
+
+            $startDate = new Time($event->start);
+            $dateStart = strtotime($results->start);
+            $startDate->addHours(date('H', $dateStart));
+            $startDate->addMinutes(date('i', $dateStart));
+
+            $endDate = new Time($event->end_date);
+            $dateEnd = strtotime($results->end_date);
+            $endDate->addHours(date('H', $dateEnd));
+            $endDate->addMinutes(date('i', $dateEnd));
+
+            $json[] = [
+                'id' => $event->id,
+                'title' => $personeelResults->voornaam. ' '. $personeelResults->achternaam . ': ' .$results->name,
+                'details' => $personeelResults->voornaam . ' ' . $personeelResults->achternaam . ': '. $event->details . ' ' . $results->start . ' '. $results->end_date,
+                'start'=> $startDate,
+                'end' => $endDate,
+                'url' => Router::url(['action' => 'view', $event->id]),
 
             ];
         }

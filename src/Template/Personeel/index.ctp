@@ -20,7 +20,7 @@
                 <td><?= h($personeel->voornaam) ?></td>
                 <td><?= h($personeel->achternaam) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Planning'),  array('controller'=>'FullCalendar.Events', 'action'=>'feed', $personeel->id)) ?>
+                    <?= $this->Html->link(__('Planning'), ['controller' => 'Personeel', 'action' => 'planning', $personeel->id]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

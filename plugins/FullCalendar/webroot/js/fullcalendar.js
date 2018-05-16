@@ -3739,7 +3739,7 @@ Grid.mixin({
 					_this.triggerSegMouseout(seg, ev);
 				},
 				click: function(seg, ev) {
-					return view.trigger('eventClick', this, seg.event, ev); // can return `false` to cancel
+					return false; // can return `false` to cancel
 				},
 				mousedown: function(seg, ev) {
 					if ($(ev.target).is('.fc-resizer') && view.isEventResizable(seg.event)) {
@@ -5473,12 +5473,12 @@ DayGrid.mixin({
 		classes.unshift('fc-day-grid-event', 'fc-h-event');
 
 		// Only display a timed events time if it is the starting segment
-		if (seg.isStart) {
+		/*if (seg.isStart) {
 			timeText = this.getEventTimeText(event);
 			if (timeText) {
 				timeHtml = '<span class="fc-time">' + htmlEscape(timeText) + '</span>';
 			}
-		}
+		}*/
 
 		titleHtml =
 			'<span class="fc-title">' +
@@ -8952,7 +8952,7 @@ Calendar.defaults = {
 
 	timezone: false,
 
-	//allDayDefault: undefined,
+	allDayDefault: false,
 
 	// locale
 	isRTL: false,

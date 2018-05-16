@@ -12,10 +12,9 @@
 ?>
 
 <div class="eventTypes small-12 small-centered columns">
-	<h2 class="inline-block"><?= __('Event Types');?></h2>
+	<h2 class="inline-block"><?= __('Soorten shiften');?></h2>
 	<ul class="no-bullet inline-list inline-block">
-		<li><?= $this->Html->link(__('Add an Event Type', true), ['action' => 'add']); ?></li>
-		<li><?= $this->Html->link(__('Beheer shiften', true), ['controller' => 'events', 'action' => 'index']); ?></li>
+		<li><?= $this->Html->link(__('Shift toevoegen', true), ['action' => 'add']); ?></li>
         <li><?= $this->Html->link(__('Toon kalender', true), ['controller' => 'full_calendar']); ?></li>
 	</ul>
 	<table cellpadding="0" cellspacing="0">
@@ -35,12 +34,11 @@
 	?>
 		<tr<?= $class;?>>
 			<td><?= $eventType->name; ?></td>
-	        <td><?= $eventType->start; ?></td>
-	        <td><?= $eventType->end_date; ?></td>
+	        <td><?= date('H:i', strtotime( $eventType->start)); ?></td>
+            <td><?= date('H:i', strtotime( $eventType->end_date)); ?></td>
 			<td class="actions">
-				<?= $this->Html->link(__('Tonen', true), ['action' => 'view', $eventType->id]); ?>
 				<?= $this->Html->link(__('Aanpassen', true), ['action' => 'edit', $eventType->id]); ?>
-				<?= $this->Form->postLink('Verwijderen', ['action' => 'delete', $eventType->id], ['confirm' => 'Are you sure?']); ?>
+				<?= $this->Form->postLink('Verwijderen', ['action' => 'delete', $eventType->id], ['confirm' => 'Bent u zeker?']); ?>
 			</td>
 		</tr>
 		<?php endforeach; ?>

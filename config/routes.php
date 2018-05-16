@@ -57,7 +57,11 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/logout', array('controller' => 'Login', 'action' => 'logout'));
 
+    $routes->connect('/calendar', ['controller' => 'Personeel', 'action' => 'allCalenders']);
+
     $routes->connect('/personeel', array('controller' => 'Personeel', 'action' => 'index'));
+
+    $routes->connect('/ical', array('controller' => 'Ical', 'action' => 'create'));
     /**
      * Connect catchall routes for all controllers.
      *
