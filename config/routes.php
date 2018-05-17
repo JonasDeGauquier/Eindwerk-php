@@ -61,7 +61,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/personeel', array('controller' => 'Personeel', 'action' => 'index'));
 
-    $routes->connect('/ical', array('controller' => 'Ical', 'action' => 'create'));
+    $routes->connect('/ical', array('controller' => 'FullCalendar', 'action' => 'create'));
     /**
      * Connect catchall routes for all controllers.
      *

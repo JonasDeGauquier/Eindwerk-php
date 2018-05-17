@@ -16,7 +16,6 @@ jQuery(document).ready(function ($) {
 
     for(var i = 0; i < test.length; i++) {
         if(i%2) {
-            console.log("loop", test[i]);
 
         }
         else {

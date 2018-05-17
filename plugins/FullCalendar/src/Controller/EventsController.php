@@ -12,6 +12,8 @@
 
 namespace FullCalendar\Controller;
 
+use BOMO\IcalBundle\Provider\IcsProvider;
+use Cake\Filesystem\File;
 use Cake\I18n\Time;
 use Cake\ORM\TableRegistry;
 use ChromePhp;
@@ -235,5 +237,66 @@ class EventsController extends FullCalendarAppController
             $this->response->body(json_encode($this->request->data));
             return $this->response;
         }
+    }
+
+    /**
+     * @return static
+     */
+    public function create() {
+
+        $provider = new icsProvider();
+
+        $tz = $provider->createTimezone();
+        $tz
+            ->setTzid('Europe/Brussels')
+            ->setProperty('X-LIC-LOCATION', $tz->getTzid())
+        ;
+
+        $cal = $provider->createCalendar($tz);
+
+        $cal
+            ->setName('My cal1')
+            ->setDescription('Foo')
+        ;
+
+        $user = (new \Cake\Network\Session)->read('User');
+        $events = $this->Events->find('all')->contain(['EventTypes'])->where(['personeel_id =' => $user]);
+
+        foreach($events as $event) {
+
+            $eventsType = TableRegistry::get('EventTypes')->find('all')->where(['id =' => $event->event_type_id]);
+            $results = $eventsType->all()->first();
+
+            Time::setToStringFormat('YYYY-MM-dd HH:mm:ss');
+            $startDate = new Time($event->start);
+            $dateStart = strtotime($results->start);
+
+            $startDate->addHours(date('H', $dateStart )-2);
+            $startDate->addMinutes(date('i', $dateStart));
+
+            $endDate = new Time($event->end_date);
+            $dateEnd = strtotime($results->end_date);
+            $endDate->addHours(date('H', $dateEnd) -2);
+            $endDate->addMinutes(date('i', $dateEnd));
+
+            $event = $cal->newEvent();
+            $event
+                ->setStartDate($startDate)
+                ->setEndDate($endDate)
+                ->setName($results->name)
+            ;
+        }
+
+        $calStr = $cal->returnCalendar();
+
+        $file = new File('plugins/FullCalendar/src/files/ical.ics', true);
+        $file->write($calStr);
+
+        $response = $this->response->withFile(
+            $file->path,
+            ['download' => true, 'name' => 'ical.ics']
+        );
+
+        return $response;
     }
 }

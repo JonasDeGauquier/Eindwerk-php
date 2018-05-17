@@ -6,6 +6,7 @@ Router::scope('/', ['plugin' => 'FullCalendar'], function ($routes) {
     $routes->connect('/full-calendar', ['controller' => 'FullCalendar']);
 
     $routes->connect('/full-calendar/index', ['controller' => 'FullCalendar', 'action' => 'index']);
+    $routes->connect('/full-calendar/create', ['controller' => 'Events', 'action' => 'create']);
     $routes->connect('/events', ['controller' => 'Events', 'action' => 'index']);
     $routes->connect('/events/index', ['controller' => 'Events', 'action' => 'index']);
     $routes->connect('/events/add', ['controller' => 'Events', 'action' => 'add']);

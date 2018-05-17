@@ -13,8 +13,10 @@
 
 namespace FullCalendar\Controller;
 
+use BOMO\IcalBundle\Provider\IcsProvider;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
+use Cake\Filesystem\File;
 use FullCalendar\Controller\FullCalendarAppController;
 use PDO;
 use Cake\I18n\Time;
