@@ -73,8 +73,28 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <div class="container clearfix">
     <?= $this->fetch('content') ?>
 </div>
-<footer>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h6 class="text-uppercase">Wettelijk</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Cookie policy</a>
+                    </li>
+                    <li>
+                        <a href="#!">Privacy policy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row text-center">
+            <h6 class="text-muted text-center">Copyright © 2018 Jonas De Gauquier. Alle rechten voorbehouden.</h6>
+        </div>
+    </div>
 </footer>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -84,5 +104,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script type="text/javascript" id="cookieinfo"
+        src="//cookieinfoscript.com/js/cookieinfo.min.js"
+        data-message="Deze website maakt gebruik van cookies om uw surfervaring te verbeteren.
+        Door verder te surfen gaat u akkoord dat wij cookies gebruiken."
+        data-linkmsg="">
+</script>
 </body>
 </html>

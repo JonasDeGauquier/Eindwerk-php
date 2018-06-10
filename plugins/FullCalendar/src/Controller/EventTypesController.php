@@ -61,10 +61,10 @@ class EventTypesController extends FullCalendarAppController
         if ($this->request->is('post')) {
             $eventType = $this->EventTypes->patchEntity($eventType, $this->request->data);
             if ($this->EventTypes->save($eventType)) {
-                $this->Flash->success(__('The event type has been saved.'));
+                $this->Flash->success(__('Type shift is toegevoegd'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The event type could not be saved. Please, try again.'));
+                $this->Flash->error(__('Type shift is niet toegepast. Probeer opnieuw!'));
             }
         }
         $this->set(compact('eventType'));
@@ -91,10 +91,10 @@ class EventTypesController extends FullCalendarAppController
             if (!empty($this->request->data)) {
                 $eventType = $this->EventTypes->patchEntity($eventType, $this->request->data);
                 if ($this->EventTypes->save($eventType)) {
-                    $this->Flash->success(__('The event type has been saved', true));
+                    $this->Flash->success(__('Type shift is aangepast', true));
                     return $this->redirect(['action' => 'index']);
                 } else {
-                    $this->Flash->error(__('The event type could not be saved. Please, try again.', true));
+                    $this->Flash->error(__('Type shift is niet toegepast. Probeer opnieuw!', true));
                 }
             }
             if (empty($this->request->data)) {
@@ -117,9 +117,9 @@ class EventTypesController extends FullCalendarAppController
         $this->request->allowMethod(['post', 'delete']);
         $eventType = $this->EventTypes->get($id);
         if ($this->EventTypes->delete($eventType)) {
-            $this->Flash->success(__('The event type has been deleted.'));
+            $this->Flash->success(__('Type shift is verwijderd'));
         } else {
-            $this->Flash->error(__('The event type could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Type shift is niet verwijderd. Probeer opnieuw!\''));
         }
         return $this->redirect(['action' => 'index']);
     }

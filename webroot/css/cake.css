@@ -532,3 +532,27 @@ table td {
     vertical-align: top;
     word-break: break-all;
 }
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    line-height: 60px;
+    background-color: #f5f5f5;
+}
+
+.text-muted {
+    color: #636c72!important;
+    width: 100%
+}
+
+.list-unstyled {
+     margin: 0;
+     list-style: none;
+ }
+
+.list-unstyled > li > a {
+    color: #1a1a1a;
+    font-size: 14px;
+}
+

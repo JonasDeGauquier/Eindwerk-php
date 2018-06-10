@@ -80,10 +80,10 @@ class EventsController extends FullCalendarAppController
         if ($this->request->is('post')) {
             $event = $this->Events->patchEntity($event, $this->request->data);
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('The event has been saved.'));
+                $this->Flash->success(__('Shift is toegevoegd'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The event could not be saved. Please, try again.'));
+                $this->Flash->error(__('Shift is niet toegevoegd. Probeer opnieuw!'));
             }
         }
         $this->set('eventTypes', $this->Events->EventTypes->find('list'));
@@ -104,10 +104,10 @@ class EventsController extends FullCalendarAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $event = $this->Events->patchEntity($event, $this->request->data);
             if ($event_id = $this->Events->save($event)) {
-                $this->Flash->success(__('The event has been saved.'));
+                $this->Flash->success(__('Shift is aangepast'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The event could not be saved. Please, try again.'));
+                $this->Flash->error(__('Shift is niet toegevoegd. Probeer opnieuw!'));
             }
         }
         $eventTypes = $this->Events->EventTypes->find('list');
@@ -127,9 +127,9 @@ class EventsController extends FullCalendarAppController
         $this->request->allowMethod(['post', 'delete']);
         $event = $this->Events->get($id);
         if ($this->Events->delete($event)) {
-            $this->Flash->success(__('The event has been deleted.'));
+            $this->Flash->success(__('Shift is verwijderd'));
         } else {
-            $this->Flash->error(__('The event could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Shift is niet verwijderd. Probeer opnieuw!'));
         }
         return $this->redirect(['action' => 'index']);
     }

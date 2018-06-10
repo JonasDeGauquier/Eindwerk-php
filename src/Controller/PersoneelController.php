@@ -23,7 +23,7 @@ class PersoneelController extends AppController
         $this->paginate = [
             'contain' => ['Adres', 'Rol']
         ];
-        $personeel = $this->paginate($this->Personeel);
+        $personeel = $this->paginate($this->Personeel->find('all', array('conditions'=>array('Personeel.actief'=>true))));
 
         $this->set(compact('personeel'));
     }
@@ -54,12 +54,7 @@ class PersoneelController extends AppController
      * @param null $id
      */
     public function allCalenders($id=null) {
-        /*$conn = ConnectionManager::get('default');
-        $stmt2 = $conn->execute("SELECT * FROM personeel WHERE actief = 'true'");
-        $queryResult = $stmt2 ->fetch(PDO::FETCH_ASSOC);
-        $this->set('personeel', $queryResult);*/
-
-        $personeel = $this->Personeel->find('all');
+        $personeel = $this->Personeel->find('all', array('conditions'=>array('Personeel.actief'=>true)));
 
         $this->set('personeel', $personeel);
 

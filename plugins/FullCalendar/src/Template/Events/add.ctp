@@ -16,10 +16,10 @@
 	<fieldset>
  		<legend><?= __('Voeg shift toe  '); ?></legend>
 	<?php
-		echo $this->Form->input('event_type_id');
+		echo $this->Form->input('event_type_id', ['label' => 'Type shift']);
 		echo $this->Form->input('details');
-        echo $this->Form->input('start', ['timeFormat' => 24]);
-        echo $this->Form->input('end_date', ['timeFormat' => 24]);
+        echo $this->Form->input('start', ['timeFormat' => 24, 'label' => 'Start datum']);
+        echo $this->Form->input('end_date', ['timeFormat' => 24, 'label' => 'Eind datum']);
         if ((new \Cake\Network\Session)->check('personeel')) {
             echo  $this->Form->hidden( 'personeel_id', array( 'value' =>  (new \Cake\Network\Session)->read('personeel') ) );
         } else {
@@ -27,6 +27,6 @@
         }
 	?>
 	</fieldset>
-<?= $this->Form->button(__('Submit', true));?>
+<?= $this->Form->button(__('Toevoegen', true));?>
 <?= $this->Form->end(); ?>
 </div>

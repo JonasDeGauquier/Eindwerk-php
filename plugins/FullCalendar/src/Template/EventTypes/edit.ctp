@@ -17,12 +17,12 @@
         <legend><?= __('Edit Event Type'); ?></legend>
         <?php
         echo $this->Form->input('id');
-        echo $this->Form->input('name');
-        echo $this->Form->input('start', ['timeFormat' => 24]);
-        echo $this->Form->input('end_date', ['timeFormat' => 24]);
+        echo $this->Form->input('name', ['label' => 'Naam']);
+        echo $this->Form->input('start', ['timeFormat' => 24, 'label' => 'Start uur']);
+        echo $this->Form->input('end_date', ['timeFormat' => 24, 'label' => 'Eind uur']);
 
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit', true)); ?>
+    <?= $this->Form->button(__('Pas aan', true)); ?>
     <?= $this->Form->end(); ?>
 </div>

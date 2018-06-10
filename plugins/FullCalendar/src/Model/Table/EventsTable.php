@@ -44,11 +44,6 @@ class EventsTable extends Table
     {
         $validator
             ->allowEmpty('id', 'create');
-            
-        $validator
-            ->allowEmpty('details', 'create');
-            
-
 
         return $validator;
     }

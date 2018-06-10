@@ -11,24 +11,16 @@
  */
 ?>
 
-<div class="actions small-12 medium-4 large-3 columns">
-	<h4>Actions</h4>
-	<ul class="no-bullet">
-		<li><?= $this->Html->link(__('Manage Event Types', true), ['action' => 'index']);?></li>
-		<li><?= $this->Html->link(__('Manage Events', true), ['controller' => 'events', 'action' => 'index']); ?></li>
-		<li><?= $this->Html->link(__('View Calendar', true), ['controller' => 'full_calendar']); ?></li>
-	</ul>
-</div>
-<div class="float-none form small-12 medium-8 large-9 columns">
+<div class="float-none form small-12 medium-12 large-12 columns">
 	<?= $this->Form->create($eventType);?>
 		<fieldset>
-	 		<legend><?= __('Add Event Type'); ?></legend>
+	 		<legend><?= __('Add Event Type', ['label' => 'Voeg een type shift toe']); ?></legend>
 		<?php
-			echo $this->Form->input('name');
-            echo $this->Form->input('start', ['timeFormat' => 24]);
-            echo $this->Form->input('end_date', ['timeFormat' => 24]);
+			echo $this->Form->input('name', ['label' => 'Naam']);
+            echo $this->Form->input('start', ['timeFormat' => 24, 'label' => 'Start uur']);
+            echo $this->Form->input('end_date', ['timeFormat' => 24, 'label' => 'Eind uur']);
 		?>
 		</fieldset>
-	<?= $this->Form->button(__('Submit', true));?>
+	<?= $this->Form->button(__('Toevoegen', true));?>
 	<?= $this->Form->end(); ?>
 </div>
