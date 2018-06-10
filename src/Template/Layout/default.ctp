@@ -42,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Planning master</a>
+    <a class="navbar-brand" href="/">Planning master</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -81,10 +81,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <h6 class="text-uppercase">Wettelijk</h6>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Cookie policy</a>
+                        <a href="/cookie">Cookie policy</a>
                     </li>
                     <li>
-                        <a href="#!">Privacy policy</a>
+                        <a href="/privacy">Privacy policy</a>
                     </li>
                 </ul>
             </div>
@@ -104,6 +104,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+// FREE AND SIMPLE COOKIE SCRIPT. (z.d.). Geraadpleegd op 1 juni 2018, van https://cookieinfoscript.com
 <script type="text/javascript" id="cookieinfo"
         src="//cookieinfoscript.com/js/cookieinfo.min.js"
         data-message="Deze website maakt gebruik van cookies om uw surfervaring te verbeteren.

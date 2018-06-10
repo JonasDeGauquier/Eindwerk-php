@@ -241,6 +241,8 @@ class EventsController extends FullCalendarAppController
 
     /**
      * @return static
+     *
+     * BorisMorel. (2018, 8 maart). Create ICS url or file. Geraadpleegd op 8 mei 2018, van https://github.com/BorisMorel/IcalBundle
      */
     public function create() {
 
