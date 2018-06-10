@@ -22,6 +22,8 @@ use Cake\Routing\Router;
 /**
  * Events Controller
  *
+ * Curtisblack2004. (2013, 16 mei). Event Calendar Plugin for CakePHP. Geraadpleegd op 24 maart 2018, van https://github.com/curtisblack2004/CakePHP-Full-Calendar-Plugin
+ *
  * @property \FullCalendar\Model\Table\EventsTable $Events
  */
 class EventsController extends FullCalendarAppController

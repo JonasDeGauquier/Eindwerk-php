@@ -15,6 +15,10 @@ namespace FullCalendar\Controller;
 
 use App\Controller\AppController;
 
+/*
+ * Curtisblack2004. (2013, 16 mei). Event Calendar Plugin for CakePHP. Geraadpleegd op 24 maart 2018, van https://github.com/curtisblack2004/CakePHP-Full-Calendar-Plugin
+ */
+
 class FullCalendarAppController extends AppController
 {
 	public $helpers = ['Html', 'Form'];
