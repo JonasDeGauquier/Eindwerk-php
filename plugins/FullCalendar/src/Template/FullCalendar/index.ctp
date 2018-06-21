@@ -10,9 +10,20 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 ?>
-    <div class="Calendar index">
-        <div id="calendar"></div>
+<?php
+if ($naam) {
+    ?>
+    <div class="row">
+        <label>Agenda van: <?= ($naam['voornaam'] . ' '. $naam['achternaam']) ?></label>
     </div>
+<?php
+}
+?>
+
+<div class="Calendar index">
+    <div id="calendar"></div>
+</div>
+
 <div class="row">
     <?php
 
@@ -20,7 +31,7 @@
 
     if ($rol == 1) {
         ?>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="actions">
                 <ul class="no-bullet">
                     <li><?= $this->Html->link(__('Voeg een shift toe', true), ['controller' => 'events', 'action' => 'add']) ?></li>

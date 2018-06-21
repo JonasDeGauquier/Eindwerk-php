@@ -39,6 +39,15 @@ class FullCalendarController extends FullCalendarAppController
 
 	public function index($id=null) {
 
+        $id = (new \Cake\Network\Session)->read('personeel');
+
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->prepare("SELECT * FROM personeel WHERE actief = 'true' AND id =:id");
+        $stmt->execute(array(":id" => $id));
+
+        $queryResult = $stmt ->fetch(PDO::FETCH_ASSOC);
+
+        $this->set('naam', $queryResult);
 	}
 
     /**

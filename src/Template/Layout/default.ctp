@@ -105,7 +105,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-// FREE AND SIMPLE COOKIE SCRIPT. (z.d.). Geraadpleegd op 1 juni 2018, van https://cookieinfoscript.com
+<!--FREE AND SIMPLE COOKIE SCRIPT. (z.d.). Geraadpleegd op 1 juni 2018, van https://cookieinfoscript.com-->
 <script type="text/javascript" id="cookieinfo"
         src="//cookieinfoscript.com/js/cookieinfo.min.js"
         data-message="Deze website maakt gebruik van cookies om uw surfervaring te verbeteren.
